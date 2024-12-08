@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Dynamic Webpage with Sidebar and Navigation</title>
+    <style>
+        /* Ensure the body takes full height of the page */
+        html,
+        body {
+            height: 100%;
+            /* Full height */
+            margin: 0;
+            /* Remove default margin */
+        }
+
+        /* Flexbox layout for the entire page */
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Sidebar style */
+        #sidebar {
+            height: 100vh;
+            background-color: #f8f9fa;
+            padding-top: 20px;
+        }
+
+        /* Main content style */
+        #content {
+            margin-left: 250px;
+            padding: 20px;
+            flex: 1;
+            /* Allow the content to expand and push footer down */
+        }
+
+        /* Footer style */
+        .footer {
+            width: 100%;
+            /* Full width */
+            margin-top: auto;
+            /* Pushes the footer to the bottom */
+        }
+
+        /* Optional: Remove bottom margin from paragraph */
+        .footer p {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Website Title</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="/page1">1</a></li>
+                <li class="nav-item"><a class="nav-link" href="/page2">2</a></li>
+                <li class="nav-item"><a class="nav-link" href="/page3">3</a></li>
+                <li class="nav-item"><a class="nav-link" href="/page4">4</a></li>
+                <li class="nav-item"><a class="nav-link" href="/page5">5</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/page6">Companies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/page7">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/page8">Cargo Contact List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/page8">Employees</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/page8">Daily Report</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main id="content" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h1 class="mt-5">Welcome to the Dynamic Webpage</h1>
+                <p>This is the main page content area.</p>
+
+                <div class="container">
+                    <!-- Card Deck -->
+                <div class="card-deck">
+                    <div class="card" style="min-width: 200px;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">PREFABRİK</h5>
+                            <p class="card-text">Description for Page 1.</p>
+                            <a href="/page1" class="btn btn-primary">Go to Page 1</a>
+                        </div>
+                    </div>
+                    <div class="card" style="min-width: 200px;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">HIRDAVAT</h5>
+                            <p class="card-text">Description for Page 2.</p>
+                            <a href="/page2" class="btn btn-primary">Go to Page 2</a>
+                        </div>
+                    </div>
+                    <div class="card" style="min-width: 200px;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">PROFİL-BORU-SAÇ GRUBU</h5>
+                            <p class="card-text">Description for Page 3.</p>
+                            <a href="/page3" class="btn btn-primary">Go to Page 3</a>
+                        </div>
+                    </div>
+                    <div class="card" style="min-width: 200px;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">ÇATI GRUBU</h5>
+                            <p class="card-text">Description for Page 4.</p>
+                            <a href="/page4" class="btn btn-primary">Go to Page 4</a>
+                        </div>
+                    </div>
+                    <div class="card" style="min-width: 200px;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">YALITIM GRUBU</h5>
+                            <p class="card-text">Description for Page 5.</p>
+                            <a href="/page5" class="btn btn-primary">Go to Page 5</a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                <div class="container">
+                    <h1 class="text-center">Items List</h1>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Brand</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Description</th>
+                                    <th>Image</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% products.forEach(product=> { %>
+                                    <tr>
+                                        <td>
+                                            <%= product.brand %>
+                                        </td>
+                                        <td>
+                                            <%= product.category %>
+                                        </td>
+                                        <td>
+                                            <%= product.price %> Euro
+                                        </td>
+                                        <td>
+                                            <%= product.description %>
+                                        </td>
+                                        <td>
+                                            <img src="/img/<%= product.imgUrl %>" alt="<%= product.brand %>" width="100"
+                                                height="100">
+                                        </td>
+                                    </tr>
+                                    <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <h3 class="mb-4">Specific Search of Saled Product </h3>
+                    <!-- Search Section -->
+                    <input type="text" class="text-center" id="searchProductSales" placeholder="Enter product name">
+                    <button class="btn btn-primary" onclick="searchSalesInvoice()">Search</button>
+
+                    <!-- Loading Indicator -->
+                    <div id="searchLoader" class="d-none text-center">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+
+                    <!-- Display Search Results -->
+                    <div id="searchResults" class="my-4">
+                        <table id="resultsTable" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Product Name</th>
+                                    <th>Amount</th>
+                                    <th>Unit</th>
+                                    <th>Price</th>
+                                    <th>Description</th>
+                                    <th>Customer</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="resultsBody">
+                                <!-- Rows will be added dynamically here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+
+
+    <script>
+        async function searchSalesInvoice() {
+    const searchLoader = document.getElementById('searchLoader');
+    searchLoader.classList.remove('d-none'); // Show loader
+
+    const searchTerm = document.getElementById('searchProductSales').value;
+
+    if (!searchTerm) {
+        searchLoader.classList.add('d-none'); // Hide loader if input is empty
+        return;
+    }
+
+    try {
+        const response = await fetch(`/search-sales?product_name=${searchTerm}`);
+        const invoices = await response.json();
+
+        const resultsBody = document.getElementById('resultsBody');
+        resultsBody.innerHTML = ''; // Clear previous results
+
+        invoices.forEach(invoice => {
+            const formattedDate = new Date(invoice.dateOfSales).toLocaleDateString('en-GB', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+
+            const row = `
+                <tr>
+                    <td>${invoice.product_name}</td>
+                    <td>${invoice.amount}</td>
+                    <td>${invoice.unit}</td>
+                    <td>${invoice.price} €</td>
+                    <td>${invoice.description}</td>
+                    <td>${invoice.customer}</td>
+                    <td>${formattedDate}</td>
+                </tr>
+            `;
+            resultsBody.innerHTML += row;
+        });
+
+        searchLoader.classList.add('d-none'); // Hide loader after fetching results
+    } catch (error) {
+        console.error('Error fetching sales invoices:', error);
+        searchLoader.classList.add('d-none'); // Hide loader in case of an error
+    }
+}
+
+    </script>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white text-center py-3">
+        <p class="mb-0">© 2024 Udi Management. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery (optional for Bootstrap JS functionality) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
